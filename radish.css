@@ -1,0 +1,94 @@
+body {
+  padding: 20px;
+}
+.btn {
+  background-color: white;
+  border-color: black;
+  align-items: center;
+  margin: 8px;
+  font-family: 'Forum';
+}
+
+.link {
+  background:none;
+  color:inherit;
+  border:none;
+  padding:0!important;
+}
+.rightB {
+border-right: thin grey solid;
+}
+h1 {
+  text-align: center;
+  font-family: 'Abril Fatface';
+  font-size: 70px;
+}
+h2 {
+  text-align: left;
+  padding-left: 20px;
+  font-family: 'Forum';
+  font-size: 45px;
+  font-weight: 700;
+}
+a:link {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+a {
+  color: black;
+}
+h5 {
+  text-align: center;
+  font-family: 'Forum';
+  font-size: 15px;
+}
+h4 {
+  font-family: 'Merriweather';
+  font-size: 25px;
+  font-weight: 500;
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+hr {
+  width: 99%;
+  height: 0.2px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  background-color: #000000;
+}
+body {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.flex-container {
+  text-align: center;
+  align-items: center;
+  justify-content: stretch;
+  align-content: stretch;
+}
+.right {
+  padding: 15px;
+}
+.bottom {
+  padding: 10px;
+}
+.article {
+  font-size: 18px;
+}
+h4 {
+  text-align: center;
+}
+p {
+  font-size: 12px;
+  font-family: 'Forum';
+  color: #c14441;
+}

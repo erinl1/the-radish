@@ -1,0 +1,71 @@
+from urllib.request import urlopen
+import random
+from bs4 import BeautifulSoup
+from PyDictionary import PyDictionary
+import inflect
+p = inflect.engine()
+dictionary=PyDictionary()
+def load(link):
+    if link.split("/")[3] == "":
+        file = "home"
+    elif link.split("/")[3] == "section":
+        file = link.split("/")[4]
+    csv = ''
+    html_1 = urlopen(link)
+    soup = BeautifulSoup(html_1, features = 'html.parser')
+    articles = soup.find_all('article')
+    for article in articles:
+        title = article.find("h2").text.strip()
+        href = 'https://www.nytimes.com' + article.find("a").get('href')
+        img = "NO-IMG"
+        description = "NO-DESCRIPTION"
+        if article.find("img"):
+            img = article.find("img").get('src')
+        if article.find(attrs={'class': 'css-1rrs2s3 e1n8kpyg1'}):
+            description = article.find(attrs={'class': 'css-1rrs2s3 e1n8kpyg1'})
+            if description.find("li"):
+                descriptions = description.find_all('li')
+                description = '['
+                for d in descriptions:
+                    description+="'" + d.text.strip() + "',"
+                description+=']'
+            else:
+                description = description.text.strip()
+        csv+=title + '\t' + "'" + description + "'" + '\t' + href + '\t' + img + '\n'
+    #print(csv)
+    articles = csv.split("\n")
+    converted = ""
+    nouns = open('nounlist.txt').read()
+    noun_list = nouns.split()
+    nlen= len(noun_list) - 1
+    for article in articles:
+        title = article.split("\t")[0]
+        #print(title)
+        words = title.split(" ")
+        words_array = []
+        counter = 0
+        for word in words:
+            if len(word) > 5:
+                 #print(word)
+                    if dictionary.meaning(word):
+                        if u'Noun' in dictionary.meaning(word):
+                            if random.random() < 0.9:
+                                if word[-1] == 's':
+                                    new = p.plural(str(noun_list[random.randrange(0, nlen)])).capitalize()
+                                else:
+                                    new = str(noun_list[random.randrange(0, nlen)]).capitalize()
+                                print(new)
+                                words_array.append(new.encode('utf-8'))
+                            else:
+                                words_array.append(word.encode('utf-8'))
+                        else:
+                            words_array.append(word.encode('utf-8'))
+                    else:
+                        words_array.append(word.encode('utf-8'))
+            else:
+                words_array.append(word.encode('utf-8'))
+        title = [line.decode('utf-8').strip() for line in words_array]
+        etc = ("\t").join(article.split("\t")[1:])
+        converted += " ".join(title) + "\t" + etc + "\n"
+    f = open(file + ".txt", "w").write(converted)
+    #print(converted)

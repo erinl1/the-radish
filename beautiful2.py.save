@@ -1,0 +1,64 @@
+import beautifulsoup
+beautifulsoup.load('https://www.nytimes.com/section/world')
+beautifulsoup.load('https://www.nytimes.com/section/us')
+beautifulsoup.load('https://www.nytimes.com/section/politics')
+beautifulsoup.load('https://www.nytimes.com/section/nyregion')
+def web_print(link):
+ # beautifulsoup.load(link)
+  master_ary = []
+  pic_ary = []
+  nopic_ary = []
+  if link.split("/")[3] == "":
+    file = "home"
+  elif link.split("/")[3] == "section":
+     file = link.split("/")[4]
+  s = open(file + '.txt', encoding='utf-8').read()
+  s = s.encode('ascii', 'xmlcharrefreplace').decode()
+  articles = s.split('\n')
+  for article in articles:
+    sections = article.split("\t")
+    if len(sections) > 3:
+      dict = {}
+      dict["title"] = sections[0]
+      dict["description"] = sections[1]
+      dict["link"] = sections[2]
+      dict["photo"] = sections[3]
+      master_ary.append(dict)
+      if dict['photo'] == 'NO-IMG':
+        nopic_ary.append(dict)
+      else: 
+        pic_ary.append(dict)
+  return [master_ary, pic_ary, nopic_ary]
+beautifulsoup.load('https://www.nytimes.com/section/business')
+beautifulsoup.load('https://www.nytimes.com/section/technology')
+beautifulsoup.load('https://www.nytimes.com/section/science')
+beautifulsoup.load('https://www.nytimes.com/section/health')
+beautifulsoup.load('https://www.nytimes.com/section/sports')
+beautifulsoup.load('https://www.nytimes.com/section/arts')
+beautifulsoup.load('https://www.nytimes.com/section/books')
+def web_print(link):
+ # beautifulsoup.load(link)
+  master_ary = []
+  pic_ary = []
+  nopic_ary = []
+  if link.split("/")[3] == "":
+    file = "home"
+  elif link.split("/")[3] == "section":
+     file = link.split("/")[4]
+  s = open(file + '.txt', encoding='utf-8').read()
+  s = s.encode('ascii', 'xmlcharrefreplace').decode()
+  articles = s.split('\n')
+  for article in articles:
+    sections = article.split("\t")
+    if len(sections) > 3:
+      dict = {}
+      dict["title"] = sections[0]
+      dict["description"] = sections[1]
+      dict["link"] = sections[2]
+      dict["photo"] = sections[3]
+      master_ary.append(dict)
+      if dict['photo'] == 'NO-IMG':
+        nopic_ary.append(dict)
+      else: 
+        pic_ary.append(dict)
+  return [master_ary, pic_ary, nopic_ary]

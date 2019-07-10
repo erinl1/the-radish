@@ -1,0 +1,27 @@
+#!/usr/bin/python3
+print('Content-type: text/html\n')
+import cgitb
+import codecs
+cgitb.enable()
+pic_ary = []
+nopic_ary = []
+with codecs.open("home.txt", 'r', encoding='utf-8') as f:
+    text = f.read().encode("utf-8").strip()
+#print(text)
+#text.replace('\xe2\x80\x98', "'")
+articles = text.split(b'\n')
+#print(articles)
+for article in articles:
+    dict = {}
+    sections = article.split(b"\t") 
+    s = sections[0].split(
+    print(sections[0])
+ # dict["title"] = sections[0]
+   # dict["description"] = sections[1]
+   # dict["link"] = sections[2]
+   # dict["photo"] = sections[3]
+   # if sections[3] == u'NO-IMG':
+    #    nopic_ary.append(dict)
+   # else:
+    #    pic_ary.append(dict)
+#print(nopic_ary[0]["title"])

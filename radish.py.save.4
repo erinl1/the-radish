@@ -1,0 +1,197 @@
+#!/usr/bin/python3
+print('Content-type: text/html\n')
+import cgitb
+import cgi
+import random
+cgitb.enable()
+page = cgi.FieldStorage()['page'].value
+print('''
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>The Radish</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css"
+  href="https://fonts.googleapis.com/css?family=Abril+Fatface">
+  <link rel="stylesheet" type="text/css"
+  href="https://fonts.googleapis.com/css?family=Forum">
+  <link rel="stylesheet" type="text/css"
+  href="https://fonts.googleapis.com/css?family=Merriweather">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <style>
+.link {
+    background:none;
+    color:inherit;
+    border:none;
+    padding:0!important;
+  }
+  h1 {
+    text-align: center;
+    font-family: 'Abril Fatface';
+    font-size: 70px;
+  }
+a:link {
+  text-decoration: none;
+  color: black;
+  }
+  a:hover {
+    text-decoration: none;
+    color: black;
+  }
+  a { 
+   color: black;
+  }
+  h5 {
+    text-align: center;
+    font-family: 'Forum';
+    font-size: 15px;
+  }
+  h4 {
+    font-family: 'Merriweather';
+    font-size: 25px;
+    font-weight: 500;
+  }
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  hr {
+    width: 99%;
+    height: 0.2px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    background-color: #000000;
+  }
+  body {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .flex-container {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+.right {
+border-right: thin solid black;
+}
+  </style>
+</head>
+<body>
+  <div class = 'flex-container header'><br>
+<form action = 'radish.py' method = "GET">
+    <h1><a href = 'http://homer.stuy.edu/~elee11/home.py'>The Radish</a></h1>
+    <hr></hr>
+<div class = 'row flex-container top'>
+<div class = 'col-sm-1'>
+<h5> <input class = 'link' name = 'page' type = 'submit' value = 'World'></h5>
+</div>
+<div class = 'col-sm-1'>
+<h5><input class = 'link' name = 'page' type = 'submit' value = 'US'></h5>
+</div>
+<div class = 'col-sm-1'>
+<h5><input class = 'link' name = 'page' type = 'submit' value = 'Politics'></h5>
+</div>
+<div class = 'col-sm-1'>
+<h5><input class = 'link' name = 'page' type = 'submit' value = 'N.Y.'></h5>
+</div>
+<div class = 'col-sm-1'>
+<h5><input class = 'link' name = 'page' type = 'submit' value = 'Business'></h5>
+</div>
+<div class = 'col-sm-1'>
+<h5><input class = 'link' name = 'page' type = 'submit' value = 'Opinion'></h5>
+</div>
+<div class = 'col-sm-1'>
+<h5><input class = 'link' name = 'page' type = 'submit' value = 'Tech'></h5>
+</div>
+<div class = 'col-sm-1'>
+<h5><input class = 'link' name = 'page' type = 'submit' value = 'Science'></h5>
+</div>
+<div class = 'col-sm-1'>
+<h5><input class = 'link' name = 'page' type = 'submit' value = 'Health'></h5>
+</div>
+<div class = 'col-sm-1'>
+<h5><input class = 'link' name = 'page' type = 'submit' value = 'Sports'></h5>
+</div>
+<div class = 'col-sm-1'>
+<h5><input class = 'link' name = 'page' type = 'submit' value = 'Arts'></h5>
+</div>
+<div class = 'col-sm-1'>
+<h5><input class = 'link' name = 'page' type = 'submit' value = 'Books'></h5>
+</div>
+</div>
+</form>
+  <hr>
+    </div>
+''')
+def web_print(name):
+  master_ary = []
+  pic_ary = []
+  nopic_ary = [] 
+  name = name.lower()
+  if name == "n.y.":
+    file = 'nyregion'
+  elif name == 'tech':
+    file = 'technology'
+  else:
+   file = name
+  s = open(file + '.txt', encoding='utf-8').read()
+  s = s.encode('ascii', 'xmlcharrefreplace').decode()
+  articles = s.split('\n')
+  for article in articles:
+    sections = article.split("\t")
+    if len(sections) > 3:
+      dict = {}
+      dict["title"] = sections[0]
+      dict["description"] = sections[1]
+      dict["link"] = sections[2]
+      dict["photo"] = sections[3]
+      master_ary.append(dict)
+      if dict['photo'] == 'NO-IMG':
+        nopic_ary.append(dict)
+      else: 
+        pic_ary.append(dict)
+  return [master_ary, pic_ary, nopic_ary]
+arys = web_print(page)
+#print(arys)
+print('''
+    <div class = 'row'>
+      <div class = 'col-md-8'>
+        <div class = 'row flex-container'>
+        <div class = 'col-md-8'>
+''')
+
+pic_a = arys[1][0]
+photo = pic_a["photo"]
+title = pic_a["title"]
+description = pic_a["description"]
+description = description.split("'")
+des = ''
+if description[1] != 'NO-DESCRIPTION':
+  for d in description:
+    if d == '' or d == "":
+      des+= d + "<br>"
+link = pic_a["link"]
+def header()
+print(''' 
+        <img src = ''' + photo +
+ '''>
+      </div>
+      <div class = 'right col-md-4'>
+        <h4>''' + title +
+       '''</h4><h5>''' +
+    des + "<br>"
+    + ''' </h5></div></div>
+      </div>
+    </div>''')
+
+
+
+print('''
+  </div>
+</body>
+</html>
+''')

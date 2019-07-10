@@ -1,0 +1,84 @@
+<html>
+<head>
+  <title>final project</title>
+  <link rel="icon" href="radish.png">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css"
+  href="https://fonts.googleapis.com/css?family=Muli">
+  <link rel="stylesheet" type="text/css"
+  href="https://fonts.googleapis.com/css?family=Lato:300,700">
+  <link rel="stylesheet" type="text/css"
+  href="https://fonts.googleapis.com/css?family=Courgette">
+  <link rel="stylesheet" type="text/css"
+  href="https://fonts.googleapis.com/css?family=Fjalla+One:100,700">
+  <link rel="stylesheet" type="text/css" href="style.css">
+      <!-- Latest compiled and minified JavaScript -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css"
+      href="https://fonts.googleapis.com/css?family=Muli">
+      <link rel="stylesheet" type="text/css"
+      href="https://fonts.googleapis.com/css?family=Lato:300,700">
+      <link rel="stylesheet" type="text/css"
+      href="https://fonts.googleapis.com/css?family=Courgette">
+      <link rel="stylesheet" type="text/css"
+      href="https://fonts.googleapis.com/css?family=Fjalla+One:100,700">
+      <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="main-content" style = 'height: 130%'>
+  <div class = 'container'>
+    <center><h1>THE RADISH</h1></center>
+    <h3>Erin Lee</h3>
+    <h3>period 9</h3>
+    <form action = 'home.py'>
+    <button type="submit" class="btn">link to project</button>
+    </form>
+    <button type="button" class="btn" ><a href = '#info'>project info</a></button>
+  </div>
+<div class = 'container info' id="info" style = 'height: 100%'>
+  <h2>Project Description</h2>
+  <br> <div><h3>The Radish, named after the humor news site 'The Onion', is a somewhat responsive website that displays NY Times headlines that have been scraped and modified madlibs style. </h3></div>
+  <br><h2>Instructions</h2>
+  <div><h3>Follow the 'go to project' button above to go to The Radish, where you will see the home page of the fake newspaper. You may go to any of the different pages with the given navigation bar of 12 topics. You may always go back to the home page by clicking on the title at the top. By clicking on the article titles, you may go to the pages of the original NY Times articles. </h3></div>
+  <br><h2>How it Works</h2>
+  <br><h3>This project uses Beautifulsoup to scrape the NY Times website for articles and stores their titles, images, descriptions, urls, and authors. Afterward, the titles are checked for nouns using NLTK, which are replaced with randomly chosen words from a downloaded text file. Words that seem to be plural are changed to match using Inflect. Each of the 12 pages has their data scraped and altered, and their text files are then compiled to form the text file for the home page. 
+This script, when executed, will change the article titles and keep the page up to date with the NY Times one every 2 minutes. The Radish website is manually formatted using flexbox, bootstrap, and Google Fonts, and most articles are randomly chosen to be laid out. The website mimics the features of a news site, such as the title, navigation bar, and article layout. Though there are 13 pages, there are only two python scripts: one for the home page and one for the other 12 pages. The pages use parameters/CGI to grab from the correct file and display it accordingly. </h3>  
+  <br><h2>Files</h2>
+  <br>
+   <ul style = 'list-style-type:circle; text-align: left'>
+    <li><h3> FINAL.HTML: this file</h3></li>
+    <li><h3>HOME.PY: main page</h3></li>
+    <li><h3>RADISH.PY: page template for the 12 specific topics</h3></li>
+    <li><h3>BEAUTIFULSOUP.PY: scrapes the websites for articles and modifies their titles</h3></li>
+    <li><h3>BEAUTIFUL2.PY: imports beautifulsoup script and executes it for all 12 pages and compilies the home page text file</h3></li>
+    <li><h3>---.TXT: 13 text files that provide data for the site and each page, are routinely updated</h3></li>
+    <li><h3>NOUNLIST.TXT: provides the random nouns that replace words article titles</h3></li>
+    <li><h3>RADISH.CSS: stylesheet for The Radish site</h3></li>
+    <li><h3>STYLE.CSS: stylesheet for this page</h3></li>
+    <li><h3>RADISH.PNG: favicon for all three websites</h3></li>
+    <li><h3>TITLE.PNG: title image</h3></li>
+  </ul>
+  <br><h2>Resources</h2>
+  <br>   
+   <ul style = 'list-style-type:circle; text-align: left; padding-left: 200px'>
+    <li><h3><a class = 'special' href = 'https://www.nytimes.com/' style = 'color: 'black'>NY TIMES</a></h3></li>
+    <li><h3><a class = 'special' href = 'http://www.desiquintans.com/nounlistÍ' style = 'color: 'black'>THE GREAT NOUN LIST</a></h3></li>
+    <li><h3><a class = 'special' href = 'https://www.crummy.com/software/BeautifulSoup/bs4/doc/'> BEAUTIFUL SOUP DOCUMENTATION</a></h3></li>
+    <li><h3><a class = 'special' href = 'https://www.nltk.org/book/ch05.html'>NLTK DOCUMENTATION</a></h3></li> 
+    <li><h3><a class = 'special' href = 'https://pypi.org/project/inflect/' >INFLECT DOCUMENTATION</a></h3></li>
+    <li><h3><a class = 'special' href = 'https://schedule.readthedocs.io/en/stable/' >SCHEDULE DOCUMENTATION</a></h3></li>
+    <li><h3 style = 'color: black'>FLEXBOX/GOOGLE FONTS/BOOTSTRAP</h3></li>
+  </ul><br>
+  <h2>Bugs, Errors, and Things to be Aware of</h2>
+  <ul style = 'list-style-type:circle; text-align: left'>
+  <li><h3>NLTK is not 100% accurate, and the modifications may result in titles not making grammatical sense or some illegitimate phrases.</h3></li>
+  <li><h3>Due to the lack of articles that end up scraped on the specific pages, there will be overlap in the articles displayed.</h3></li>
+  <li><h3>The text files are automatically updated as long as the script is being run on my computer. Many of my modules conflicted when I tried to combine them with web/HTML, so you will not be able to run the actual script (beautiful2.py) that scrapes and changes the articles through the website :/ But, if you run beautiful2.py, the text files will update, but they will continue to update every 2 min as long as the script is still running in terminal.</h3></li>  
+  
+</ul><br><br>
+</div>
+</div>
+</body>
+</html>
