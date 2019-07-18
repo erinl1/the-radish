@@ -73,7 +73,7 @@ def web_print(name):
   pic_ary = []
   nopic_ary = []
   file = name
-  s = open(file + '.txt', encoding='utf-8').read()
+  s = open("text/" + file + '.txt', encoding='utf-8').read()
   s = s.encode('ascii', 'xmlcharrefreplace').decode()
   articles = s.split('\n')
   for article in articles:
@@ -258,8 +258,6 @@ if len(arys[1]) > 0:
  + author +   "</p><br></div></div>" + 
 '''
 ''')
-
-#print("</div>")
 
 print('''
   </div>

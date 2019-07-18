@@ -84,7 +84,7 @@ def web_print(name):
     file = 'technology'
   else:
    file = name
-  s = open(file + '.txt', encoding='utf-8').read()
+  s = open('text/' + file + '.txt', encoding='utf-8').read()
   s = s.encode('ascii', 'xmlcharrefreplace').decode()
   articles = s.split('\n')
   for article in articles:

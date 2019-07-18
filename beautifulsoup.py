@@ -86,4 +86,4 @@ def load(link):
         etc = ("\t").join(article.split("\t")[1:])
         new_t = " ".join(new_ary)
         converted +=  new_t + "\t" + etc + "\n"
-    f = open(file + ".txt", "w").write(converted)
+    f = open("text/" + file + ".txt", "w").write(converted)
